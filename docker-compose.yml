@@ -1,0 +1,40 @@
+services:
+  account:
+    image: "ziyleedeloitte/account:v1"
+    container_name: account-ms
+    ports:
+      - "8080:8080"
+    deploy:
+      resources:
+        limits:
+          memory: 700m
+    networks:
+      - deloitte
+
+  loan:
+    image: "ziyleedeloitte/loan:v1"
+    container_name: loan-ms
+    ports:
+      - "8090:8090"
+    deploy:
+      resources:
+        limits:
+          memory: 700m
+    networks:
+      - deloitte
+
+  card:
+    image: "ziyleedeloitte/card:v1"
+    container_name: card-ms
+    ports:
+      - "9000:9000"
+    deploy:
+      resources:
+        limits:
+          memory: 700m
+    networks:
+      - deloitte
+
+networks:
+  deloitte:
+    driver: "bridge"
