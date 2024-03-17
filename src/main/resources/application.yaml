@@ -1,6 +1,7 @@
 spring:
   application:
     name: account
+
   h2:
 #  profiles:
 #    active: "prod"
@@ -8,6 +9,7 @@ spring:
       enabled: true
       settings:
         web-allow-others: true
+
   datasource:
     url: jdbc:h2:mem:testdb
     driverClassName: org.h2.Driver
@@ -15,22 +17,22 @@ spring:
       database-platform: org.hibernate.dialect.H2Dialect
       ddl-auto: create-drop
       show-sql: true
+
   config:
     import: "optional:configserver:http://localhost:8071/"   # optional -> instruct running spring application,
                                                              # even if error configuring the configuration property
+  rabbitmq:
+    host: "localhost"
+    port: 5672
+    username: "guest"
+    password: "guest"
+
 
 management:
   endpoints:
     web:
       exposure:
         include: "*"
-
-
-rabbitmq:
-  host: "localhost"
-  port: 5672
-  username: "guest"
-  password: "guest"
 
 
 server:
